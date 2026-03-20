@@ -75,3 +75,5 @@ DerivedDataCache/*
 
 # Temp Files
 Config/DefaultEditorPerProjectUserSettings.ini
+
+Content/StylizedCreaturesBundle/
