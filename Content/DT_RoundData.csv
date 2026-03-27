@@ -1,0 +1,11 @@
+---,RoundCount,MonsterMesh,MonsterABP,IsBoss,MaxHp,MoveSpeed,RewardGold,Armor
+Monster_1,1,/Script/Engine.SkeletalMesh'/Game/StylizedCreaturesBundle/Meshes/Bear/SK_Bear.SK_Bear',/Script/Engine.AnimBlueprintGeneratedClass'/Game/Blueprint/Animation/Monster/ABP_Bear.ABP_Bear_C',FALSE,100,500,1,0
+Monster_2,2,,,FALSE,200,500,1,0
+Monster_3,3,,,FALSE,400,500,1,0
+Monster_4,4,,,FALSE,200,500,1,15
+Monster_5,5,,,TRUE,3000,500,300,10
+Monster_6,6,,,FALSE,900,500,1,5
+Monster_7,7,,,FALSE,1200,500,1,5
+Monster_8,8,,,FALSE,1500,500,1,5
+Monster_9,9,,,FALSE,1800,500,1,5
+Monster_10,10,,,TRUE,15000,500,300,30
