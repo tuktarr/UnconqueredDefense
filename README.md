@@ -26,7 +26,10 @@
 - 클래스 상속 구조 (Class Hierarchy):
  => BP_TowerBase: 모든 타워의 부모 클래스입니다. 공격 범위, 공격 속도, 업그레이드 비용 등의 변수를 선언하고, 타겟팅 로직을 공통으로 처리합니다.
  => BP_Monster: 모든 몬스터의 부모 클래스입니다. 체력, 골드 보상 등을 관리합니다.
-
+- 컴포넌트 기반 설계:
+  => HealthComponent나 ProjectileMovement같이 각자의 역할을 할 수 있도록 캐릭터에 컴포넌트를 부착해서 컴포넌트 내부적으로 처리함
+- 블루프린트 인터페이스 (BPI) + EventDispatcher:
+  => 클래스 간 의존성(Coupling)을 낮춥니다
 2. 게임 시스템 구현 (Game Systems)
 
 3. 최적화 및 연출 (Optimization & UX)
