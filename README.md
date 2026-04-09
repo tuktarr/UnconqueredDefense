@@ -38,6 +38,7 @@
   => TowerSlot의 범위 밖이면 아예 건설 안되도록 설정
   - 웨이브 관리 시스템 (Wave Manager):
   => DataTable : 웨이브데이터(CurrentRoundCount)를 이용해서 몬스터의 ABP, SkeletalMesh 설정 후, 스포닝풀에서 소환
+  ==> 몬스터의 데이터에 맞게 EventDispatcher를 이용해서 처치할 시, 플레이어의 Gold에 RewardGold를 합니다. 
   => Timer by Event: 일정한 간격으로 적을 생성하는 루프를 돌립니다. 타이머 핸들로 스폰을 종료합니다.
 3. 최적화 및 연출 (Optimization & UX)
   - 오브젝트 풀링 (Object Pooling):
