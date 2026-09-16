@@ -1,0 +1,197 @@
+{
+  "routes": [
+    {"asset":"/Game/Blueprint/Actor/Tower/BP_Tower_Base","graph":"EventGraph","entry":"K2Node_CustomEvent_0","native":"TowerBossSpawned"},
+    {"asset":"/Game/Blueprint/Actor/Tower/BP_Tower_Base","graph":"EventGraph","entry":"K2Node_CustomEvent_4","native":"TowerSold"},
+    {"asset":"/Game/Blueprint/BP_PlayerController","graph":"UpgradeTowerRank","entry":"K2Node_FunctionEntry_0","native":"UpgradeTowerRank"},
+    {"asset":"/Game/Blueprint/BP_PlayerController","graph":"UpdateGhostTowerDisplay","entry":"K2Node_FunctionEntry_0","native":"UpdateGhostTowerDisplay"},
+    {"asset":"/Game/Blueprint/BP_PlayerController","graph":"EventGraph","entry":"K2Node_Event_1","native":"ControllerTick"},
+    {"asset":"/Game/Blueprint/BP_PlayerController","graph":"EventGraph","entry":"K2Node_EnhancedInputAction_0","exec":"Started","native":"ToggleBuildMode"},
+    {"asset":"/Game/Blueprint/BP_PlayerController","graph":"EventGraph","entry":"K2Node_EnhancedInputAction_1","exec":"Started","native":"ControllerClick"},
+    {"asset":"/Game/Blueprint/BP_PlayerController","graph":"EventGraph","entry":"K2Node_EnhancedInputAction_2","exec":"Started","native":"BeginMergeMode"},
+    {"asset":"/Game/Blueprint/BP_PlayerController","graph":"EventGraph","entry":"K2Node_EnhancedInputAction_2","exec":"Completed","native":"EndTowerMode"},
+    {"asset":"/Game/Blueprint/BP_PlayerController","graph":"EventGraph","entry":"K2Node_EnhancedInputAction_3","exec":"Started","native":"BeginSellMode"},
+    {"asset":"/Game/Blueprint/BP_PlayerController","graph":"EventGraph","entry":"K2Node_EnhancedInputAction_3","exec":"Completed","native":"EndTowerMode"},
+    {"asset":"/Game/Blueprint/Actor/Monster/BP_MonsterData","graph":"GetCurrentRoundData","entry":"K2Node_FunctionEntry_0","native":"GetCurrentRoundData"},
+    {"asset":"/Game/Blueprint/Actor/Monster/BP_MonsterData","graph":"EventGraph","entry":"K2Node_CustomEvent_0","native":"MonsterRoundChanged"},
+    {"asset":"/Game/Blueprint/Actor/Monster/BP_Monster","graph":"EventGraph","entry":"K2Node_CustomEvent_1","native":"MonsterActivate"},
+    {"asset":"/Game/Blueprint/Actor/Monster/BP_Monster","graph":"EventGraph","entry":"K2Node_CustomEvent_2","native":"MonsterDeactivate"},
+    {"asset":"/Game/Blueprint/Actor/Monster/BP_Monster","graph":"EventGraph","entry":"K2Node_CustomEvent_3","native":"MonsterSpawnFromPool"},
+    {"asset":"/Game/Blueprint/Actor/Monster/BP_Monster","graph":"EventGraph","entry":"K2Node_Event_1","native":"MonsterDamage"},
+    {"asset":"/Game/Blueprint/Actor/Monster/BP_Monster","graph":"EventGraph","entry":"K2Node_CustomEvent_5","native":"MonsterReward"},
+    {"asset":"/Game/Blueprint/Actor/PoolManager/BP_MonsterPortal","graph":"EventGraph","entry":"K2Node_Event_0","native":"PortalBeginPlay"},
+    {"asset":"/Game/Blueprint/Actor/PoolManager/BP_MonsterPortal","graph":"EventGraph","entry":"K2Node_CustomEvent_0","native":"PortalSpawnMonster"},
+    {"asset":"/Game/Blueprint/Actor/PoolManager/BP_MonsterPortal","graph":"EventGraph","entry":"K2Node_CustomEvent_1","native":"PortalCreateMonster"},
+    {"asset":"/Game/Blueprint/Actor/PoolManager/BP_MonsterPortal","graph":"EventGraph","entry":"K2Node_CustomEvent_2","native":"PortalResumeSpawning"},
+    {"asset":"/Game/Blueprint/Actor/PoolManager/BP_MonsterPortal","graph":"EventGraph","entry":"K2Node_CustomEvent_3","native":"PortalResetBoss"},
+    {"asset":"/Game/Blueprint/BP_TowerDefenseGameMode","graph":"GetRandomTowerByRarity","entry":"K2Node_FunctionEntry_0","native":"GetRandomTowerByRarity"},
+    {"asset":"/Game/Blueprint/Actor/Tower/BP_Tower_Base","graph":"InitializeTower","entry":"K2Node_FunctionEntry_0","native":"InitializeTower"},
+    {"asset":"/Game/Blueprint/Actor/Tower/BP_Tower_Base","graph":"EventGraph","entry":"K2Node_ComponentBoundEvent_1","native":"TowerBeginOverlap"},
+    {"asset":"/Game/Blueprint/Actor/Tower/BP_Tower_Base","graph":"EventGraph","entry":"K2Node_ComponentBoundEvent_3","native":"TowerEndOverlap"},
+    {"asset":"/Game/Blueprint/Actor/Tower/BP_Tower_Base","graph":"EventGraph","entry":"K2Node_Event_1","native":"TowerAttackNotify"},
+    {"asset":"/Game/Blueprint/Actor/Tower/BP_Tower_Base","graph":"EventGraph","entry":"K2Node_Event_2","native":"TowerAttackEndNotify"},
+    {"asset":"/Game/Blueprint/Actor/Tower/BP_Tower_Base","graph":"DestroyAndFreeSlot","entry":"K2Node_FunctionEntry_0","native":"DestroyAndFreeSlot"},
+    {
+      "asset": "/Game/Blueprint/BP_TowerDefenseGameMode",
+      "graph": "SpendGold",
+      "entry": "K2Node_FunctionEntry_0",
+      "native": "SpendGold"
+    },
+    {
+      "asset": "/Game/Blueprint/BP_TowerDefenseGameMode",
+      "graph": "AddGold",
+      "entry": "K2Node_FunctionEntry_0",
+      "native": "AddGold"
+    },
+    {
+      "asset": "/Game/Blueprint/BP_TowerDefenseGameMode",
+      "graph": "AddMonsterCount",
+      "entry": "K2Node_FunctionEntry_0",
+      "native": "AddMonsterCount"
+    },
+    {
+      "asset": "/Game/Blueprint/BP_TowerDefenseGameMode",
+      "graph": "MinusMonsterCount",
+      "entry": "K2Node_FunctionEntry_0",
+      "native": "MinusMonsterCount"
+    },
+    {
+      "asset": "/Game/Blueprint/BP_TowerDefenseGameMode",
+      "graph": "GoNextRound",
+      "entry": "K2Node_FunctionEntry_0",
+      "native": "GoNextRound"
+    },
+    {
+      "asset": "/Game/Blueprint/BP_TowerDefenseGameMode",
+      "graph": "UpdateRoundData",
+      "entry": "K2Node_FunctionEntry_0",
+      "native": "UpdateRoundData"
+    },
+    {
+      "asset": "/Game/Blueprint/BP_TowerDefenseGameMode",
+      "graph": "EventGraph",
+      "entry": "K2Node_Event_1",
+      "native": "GameModeTick"
+    },
+    {
+      "asset": "/Game/Blueprint/BP_Player",
+      "graph": "MoveToMouseDirection",
+      "entry": "K2Node_FunctionEntry_0",
+      "native": "MoveToMouseDirection"
+    },
+    {
+      "asset": "/Game/Blueprint/BP_Player",
+      "graph": "EventGraph",
+      "entry": "K2Node_Event_2",
+      "native": "PlayerTick"
+    },
+    {
+      "asset": "/Game/Blueprint/BP_Player",
+      "graph": "EventGraph",
+      "entry": "K2Node_EnhancedInputAction_0",
+      "native": "PlayerZoom",
+      "exec": "Triggered"
+    },
+    {
+      "asset": "/Game/Blueprint/Actor/Monster/BP_HP_Controller",
+      "graph": "EventGraph",
+      "entry": "K2Node_CustomEvent_0",
+      "native": "UpdateMaxHealth"
+    },
+    {
+      "asset": "/Game/Blueprint/Actor/Monster/BP_HP_Controller",
+      "graph": "EventGraph",
+      "entry": "K2Node_CustomEvent_1",
+      "native": "ReceiveDamage"
+    },
+    {
+      "asset": "/Game/Blueprint/Actor/Monster/BP_HP_Controller",
+      "graph": "EventGraph",
+      "entry": "K2Node_CustomEvent_2",
+      "native": "InitializeHealth"
+    },
+    {
+      "asset": "/Game/Blueprint/Actor/Tower/BP_Tower_Sword",
+      "graph": "TowerAction",
+      "entry": "K2Node_FunctionEntry_0",
+      "native": "SwordAction"
+    },
+    {
+      "asset": "/Game/Blueprint/Actor/Tower/BP_Tower_Gun",
+      "graph": "TowerAction",
+      "entry": "K2Node_FunctionEntry_0",
+      "native": "GunAction"
+    },
+    {
+      "asset": "/Game/Blueprint/Actor/Tower/BP_Tower_Robot",
+      "graph": "TowerAction",
+      "entry": "K2Node_FunctionEntry_0",
+      "native": "RobotAction"
+    },
+    {
+      "asset": "/Game/Blueprint/Actor/Tower/BP_Tower_Magic",
+      "graph": "TowerAction",
+      "entry": "K2Node_FunctionEntry_0",
+      "native": "MagicAction"
+    },
+    {
+      "asset": "/Game/Blueprint/Actor/Tower/BP_Tower_Support",
+      "graph": "TowerAction",
+      "entry": "K2Node_FunctionEntry_0",
+      "native": "SupportAction"
+    },
+    {
+      "asset": "/Game/Blueprint/Actor/Tower/Projectile/BP_Projectile_Base",
+      "graph": "EventGraph",
+      "entry": "K2Node_ComponentBoundEvent_0",
+      "native": "ProjectileOverlap"
+    },
+    {
+      "asset": "/Game/Blueprint/Actor/Tower/Projectile/BP_Projectile_Base",
+      "graph": "EventGraph",
+      "entry": "K2Node_CustomEvent_1",
+      "native": "ActivateProjectile"
+    },
+    {
+      "asset": "/Game/Blueprint/Actor/Tower/Projectile/BP_Projectile_Base",
+      "graph": "EventGraph",
+      "entry": "K2Node_CustomEvent_0",
+      "native": "DeactivateProjectile"
+    },
+    {
+      "asset": "/Game/Blueprint/Actor/Tower/Projectile/BP_Projectile_CannonBall",
+      "graph": "EventGraph",
+      "entry": "K2Node_ComponentBoundEvent_0",
+      "native": "CannonOverlap"
+    },
+    {
+      "asset": "/Game/Blueprint/MapStructure/BP_GridGenerator",
+      "graph": "EventGraph",
+      "entry": "K2Node_Event_0",
+      "native": "GenerateGrid"
+    },
+    {
+      "asset": "/Game/Blueprint/BP_PlayerController",
+      "graph": "ClearGhostTower",
+      "entry": "K2Node_FunctionEntry_0",
+      "native": "ClearGhostTower"
+    },
+    {
+      "asset": "/Game/Blueprint/Actor/Monster/AI/BP_MonsterController",
+      "graph": "EventGraph",
+      "entry": "K2Node_Event_2",
+      "native": "MonsterPossess"
+    },
+    {
+      "asset": "/Game/Blueprint/Actor/Monster/AI/BTTask_ClearTarget",
+      "graph": "EventGraph",
+      "entry": "K2Node_Event_0",
+      "native": "ClearAITarget"
+    },
+    {
+      "asset": "/Game/Blueprint/Actor/Monster/AI/BTService_FindNextCheckPoint",
+      "graph": "EventGraph",
+      "entry": "K2Node_Event_0",
+      "native": "FindNextCheckpoint"
+    }
+  ]
+}
