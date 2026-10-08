@@ -122,6 +122,35 @@ int32 UTDVerifyCommandlet::Main(const FString& Params)
     UTDGameplayLibrary::TowerAttackEndNotify(Tower);
     auto* Action=FindFProperty<FBoolProperty>(Tower->GetClass(),TEXT("bIsActioning")); check(Action);
     Expect(!Attacked->GetPropertyValue_InContainer(Tower) && !Action->GetPropertyValue_InContainer(Tower),TEXT("Attack end resets empty target state"));
+    AActor* Gun=CastChecked<AActor>(Spawn(TEXT("/Game/Blueprint/Actor/Tower/BP_Tower_Gun.BP_Tower_Gun_C")));
+    AActor* Monster=CastChecked<AActor>(Spawn(TEXT("/Game/Blueprint/Actor/Monster/BP_Monster.BP_Monster_C")));
+    struct FTowerTickCase
+    {
+        const TCHAR* Name;
+        const TCHAR* Path;
+    };
+    const FTowerTickCase TowerTickCases[] =
+    {
+        { TEXT("Gun"), TEXT("/Game/Blueprint/Actor/Tower/BP_Tower_Gun.BP_Tower_Gun_C") },
+        { TEXT("Sword"), TEXT("/Game/Blueprint/Actor/Tower/BP_Tower_Sword.BP_Tower_Sword_C") },
+        { TEXT("Robot"), TEXT("/Game/Blueprint/Actor/Tower/BP_Tower_Robot.BP_Tower_Robot_C") },
+        { TEXT("Magic"), TEXT("/Game/Blueprint/Actor/Tower/BP_Tower_Magic.BP_Tower_Magic_C") },
+        { TEXT("Support"), TEXT("/Game/Blueprint/Actor/Tower/BP_Tower_Support.BP_Tower_Support_C") },
+    };
+    for (const FTowerTickCase& TowerTickCase : TowerTickCases)
+    {
+        AActor* TickTower = FCString::Strcmp(TowerTickCase.Name, TEXT("Gun")) == 0
+            ? Gun
+            : CastChecked<AActor>(Spawn(TowerTickCase.Path));
+        Expect(!TickTower->IsActorTickEnabled(),
+            FString::Printf(TEXT("%s tower starts with tick disabled without targets"), TowerTickCase.Name));
+        UTDGameplayLibrary::TowerBeginOverlap(TickTower,Monster);
+        Expect(TickTower->IsActorTickEnabled(),
+            FString::Printf(TEXT("%s tower enables tick when first target enters"), TowerTickCase.Name));
+        UTDGameplayLibrary::TowerEndOverlap(TickTower,Monster);
+        Expect(!TickTower->IsActorTickEnabled(),
+            FString::Printf(TEXT("%s tower disables tick when last target leaves"), TowerTickCase.Name));
+    }
     // With a fixed seed, compare all returned fields, not just the rarity.
     UFunction* Pick=BP->FindFunction(TEXT("GetRandomTowerByRarity")); check(Pick);
     auto* Input=FindFProperty<FByteProperty>(Pick,TEXT("CurrentType")); check(Input);

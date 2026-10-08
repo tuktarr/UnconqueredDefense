@@ -19,6 +19,17 @@
 #include "Kismet/KismetSystemLibrary.h"
 
 using namespace TDLegacy;
+namespace
+{
+void SetTowerTickEnabled(UObject* Context, const bool bEnabled)
+{
+    if (AActor* Tower = Cast<AActor>(Context))
+    {
+        Tower->SetActorTickEnabled(bEnabled);
+    }
+}
+}
+
 void FTDTowerRules::TowerBeginOverlap(UObject* Context, AActor* OtherActor)
 {
     if (!IsMonster(OtherActor)) return;
@@ -29,7 +40,11 @@ void FTDTowerRules::TowerBeginOverlap(UObject* Context, AActor* OtherActor)
     bool Found = false;
     for (int32 I=0; I<Array.Num(); ++I) Found |= Inner->GetObjectPropertyValue(Array.GetRawPtr(I)) == OtherActor;
     if (!Found) Inner->SetObjectPropertyValue(Array.GetRawPtr(Array.AddValue()), OtherActor);
-    if (Array.Num()==1) SetBool(Context, TEXT("bIsActioning"), true);
+    if (Array.Num()==1)
+    {
+        SetBool(Context, TEXT("bIsActioning"), true);
+        SetTowerTickEnabled(Context, true);
+    }
 }
 void FTDTowerRules::TowerEndOverlap(UObject* Context, AActor* OtherActor)
 {
@@ -40,6 +55,7 @@ void FTDTowerRules::TowerEndOverlap(UObject* Context, AActor* OtherActor)
     FScriptArrayHelper Array(P, P->ContainerPtrToValuePtr<void>(Context));
     for (int32 I=Array.Num()-1; I>=0; --I)
         if (Inner->GetObjectPropertyValue(Array.GetRawPtr(I))==OtherActor) Array.RemoveValues(I);
+    if (Array.Num()==0) SetTowerTickEnabled(Context, false);
     // The original waits for the animation-end notification to update this flag.
 }
 void FTDTowerRules::TowerAttackNotify(UObject* Context)
@@ -51,7 +67,9 @@ void FTDTowerRules::TowerAttackNotify(UObject* Context)
 void FTDTowerRules::TowerAttackEndNotify(UObject* Context)
 {
     SetBool(Context, TEXT("bHasAttacked"), false);
-    SetBool(Context, TEXT("bIsActioning"), !Objects(Context, TEXT("TargetArray")).IsEmpty());
+    const bool bHasTargets = !Objects(Context, TEXT("TargetArray")).IsEmpty();
+    SetBool(Context, TEXT("bIsActioning"), bHasTargets);
+    if (!bHasTargets) SetTowerTickEnabled(Context, false);
 }
 void FTDTowerRules::DestroyAndFreeSlot(UObject* Context)
 {
